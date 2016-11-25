@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.1] — 2026-03-20
+
+### Changed
+
+- Standardize README structure to match template guide
+
+---
+
 ## [1.0.0] — 2026-03-13
 
 ### Added
@@ -31,5 +39,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Laravel Pint code-style configuration.
 - GitHub Actions CI pipeline for PHP 8.2, 8.3, and 8.4.
 
-[Unreleased]: https://github.com/philiprehberger/safe-file-writer/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/philiprehberger/safe-file-writer/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/philiprehberger/safe-file-writer/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/philiprehberger/safe-file-writer/releases/tag/v1.0.0

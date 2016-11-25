@@ -1,42 +1,20 @@
-# safe-file-writer
+# PHP Safe File Writer
 
 [![Tests](https://github.com/philiprehberger/safe-file-writer/actions/workflows/tests.yml/badge.svg)](https://github.com/philiprehberger/safe-file-writer/actions/workflows/tests.yml)
-[![PHPStan Level 6](https://img.shields.io/badge/PHPStan-level%206-brightgreen.svg)](https://phpstan.org/)
-[![PHP](https://img.shields.io/badge/PHP-8.2%2B-blue.svg)](https://www.php.net/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Latest Version](https://img.shields.io/packagist/v/philiprehberger/safe-file-writer.svg)](https://packagist.org/packages/philiprehberger/safe-file-writer)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Atomic file writes with temp-file swap and file locking for PHP 8.2+. Framework-agnostic, zero dependencies.
-
----
-
-## Features
-
-- Atomic writes via temp-file + rename — no partial/corrupt files on crash
-- Exclusive locking (`LOCK_EX`) on write and append operations
-- Shared locking (`LOCK_SH`) on read operations
-- Automatic parent directory creation
-- Permission preservation when overwriting existing files
-- JSON read/write helpers with `json_encode`/`json_decode`
-- Clear exception types for read and write failures
-- PHPStan level 6 clean, PSR-12 code style
-
----
+Atomic file writes with temp-file swap and file locking.
 
 ## Requirements
 
-- PHP ^8.2
-- No extensions required
-
----
+- PHP 8.2+
 
 ## Installation
 
 ```bash
 composer require philiprehberger/safe-file-writer
 ```
-
----
 
 ## Usage
 
@@ -102,8 +80,6 @@ $deleted = SafeFile::delete('/path/to/file.txt');
 // Returns true if deleted, false if file didn't exist
 ```
 
----
-
 ## API
 
 | Method | Description | Returns |
@@ -115,56 +91,17 @@ $deleted = SafeFile::delete('/path/to/file.txt');
 | `SafeFile::readJson(string $path)` | Read and decode JSON | `mixed` |
 | `SafeFile::exists(string $path)` | Check if file exists | `bool` |
 | `SafeFile::delete(string $path)` | Delete file if it exists | `bool` |
+| `FileWriteException` | Directory creation, temp-file creation, write, or rename failure | — |
+| `FileReadException` | File not found, open failure, lock failure, or read failure | — |
+| `\JsonException` | Invalid JSON on `writeJson()` or `readJson()` | — |
 
----
-
-## Exceptions
-
-| Exception | When thrown |
-|---|---|
-| `FileWriteException` | Directory creation, temp-file creation, write, or rename failure |
-| `FileReadException` | File not found, open failure, lock failure, or read failure |
-| `\JsonException` | Invalid JSON on `writeJson()` or `readJson()` |
-
-```php
-use PhilipRehberger\SafeFileWriter\Exceptions\FileWriteException;
-use PhilipRehberger\SafeFileWriter\Exceptions\FileReadException;
-
-try {
-    SafeFile::read('/nonexistent/file.txt');
-} catch (FileReadException $e) {
-    // "File not found: '/nonexistent/file.txt'."
-}
-```
-
----
-
-## Running Tests
+## Development
 
 ```bash
 composer install
-composer test
+vendor/bin/phpunit
+vendor/bin/pint --test
 ```
-
-Static analysis:
-
-```bash
-composer phpstan
-```
-
-Code style check:
-
-```bash
-composer pint
-```
-
-Run everything at once:
-
-```bash
-composer check
-```
-
----
 
 ## License
 

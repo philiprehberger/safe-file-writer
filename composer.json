@@ -14,6 +14,7 @@
     "authors": [
         {
             "name": "Philip Rehberger",
+            "email": "me@philiprehberger.com",
             "role": "Developer"
         }
     ],
@@ -37,18 +38,12 @@
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "test:coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text",
-        "pint": "vendor/bin/pint",
-        "phpstan": "vendor/bin/phpstan analyse",
-        "check": [
-            "@pint --test",
-            "@phpstan",
-            "@test"
-        ]
+        "lint": "vendor/bin/pint",
+        "analyse": "vendor/bin/phpstan analyse"
     },
     "config": {
         "sort-packages": true
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
