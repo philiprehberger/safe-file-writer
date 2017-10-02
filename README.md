@@ -1,8 +1,8 @@
 # PHP Safe File Writer
 
 [![Tests](https://github.com/philiprehberger/safe-file-writer/actions/workflows/tests.yml/badge.svg)](https://github.com/philiprehberger/safe-file-writer/actions/workflows/tests.yml)
-[![Latest Version](https://img.shields.io/packagist/v/philiprehberger/safe-file-writer.svg)](https://packagist.org/packages/philiprehberger/safe-file-writer)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/philiprehberger/safe-file-writer.svg)](https://packagist.org/packages/philiprehberger/safe-file-writer)
+[![License](https://img.shields.io/github/license/philiprehberger/safe-file-writer)](LICENSE)
 
 Atomic file writes with temp-file swap and file locking.
 
@@ -101,8 +101,9 @@ $deleted = SafeFile::delete('/path/to/file.txt');
 composer install
 vendor/bin/phpunit
 vendor/bin/pint --test
+vendor/bin/phpstan analyse
 ```
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT
