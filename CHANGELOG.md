@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-03-31
+
+### Added
+- Backup before write via `writeWithBackup()` and `writeJsonWithBackup()` with configurable backup directory
+- File checksums via `checksum()`, `verifyChecksum()`, and `Checksum::compareFiles()`
+- Atomic multi-file writes via `writeMany()` with rollback on failure
+
 ## [1.0.3] - 2026-03-31
 
 ### Changed
@@ -45,6 +52,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Laravel Pint code-style configuration.
 - GitHub Actions CI pipeline for PHP 8.2, 8.3, and 8.4.
 
-[Unreleased]: https://github.com/philiprehberger/safe-file-writer/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/philiprehberger/safe-file-writer/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/philiprehberger/safe-file-writer/compare/v1.0.3...v1.1.0
+[1.0.3]: https://github.com/philiprehberger/safe-file-writer/compare/v1.0.2...v1.0.3
+[1.0.2]: https://github.com/philiprehberger/safe-file-writer/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/philiprehberger/safe-file-writer/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/philiprehberger/safe-file-writer/releases/tag/v1.0.0
