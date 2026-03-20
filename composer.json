@@ -1,6 +1,6 @@
 {
     "name": "philiprehberger/safe-file-writer",
-    "description": "Atomic file writes with temp-file swap and file locking.",
+    "description": "Atomic file writes with temp-file swap and file locking",
     "type": "library",
     "keywords": [
         "file",
