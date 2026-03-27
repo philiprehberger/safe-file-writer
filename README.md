@@ -3,6 +3,7 @@
 [![Tests](https://github.com/philiprehberger/safe-file-writer/actions/workflows/tests.yml/badge.svg)](https://github.com/philiprehberger/safe-file-writer/actions/workflows/tests.yml)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/philiprehberger/safe-file-writer.svg)](https://packagist.org/packages/philiprehberger/safe-file-writer)
 [![License](https://img.shields.io/github/license/philiprehberger/safe-file-writer)](LICENSE)
+[![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ec6cb9)](https://github.com/sponsors/philiprehberger)
 
 Atomic file writes with temp-file swap and file locking.
 
