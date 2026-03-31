@@ -2,8 +2,7 @@
 
 [![Tests](https://github.com/philiprehberger/safe-file-writer/actions/workflows/tests.yml/badge.svg)](https://github.com/philiprehberger/safe-file-writer/actions/workflows/tests.yml)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/philiprehberger/safe-file-writer.svg)](https://packagist.org/packages/philiprehberger/safe-file-writer)
-[![License](https://img.shields.io/github/license/philiprehberger/safe-file-writer)](LICENSE)
-[![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ec6cb9)](https://github.com/sponsors/philiprehberger)
+[![Last updated](https://img.shields.io/github/last-commit/philiprehberger/safe-file-writer)](https://github.com/philiprehberger/safe-file-writer/commits/main)
 
 Atomic file writes with temp-file swap and file locking.
 
@@ -105,6 +104,24 @@ vendor/bin/pint --test
 vendor/bin/phpstan analyse
 ```
 
+## Support
+
+If you find this project useful:
+
+⭐ [Star the repo](https://github.com/philiprehberger/safe-file-writer)
+
+🐛 [Report issues](https://github.com/philiprehberger/safe-file-writer/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
+
+💡 [Suggest features](https://github.com/philiprehberger/safe-file-writer/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement)
+
+❤️ [Sponsor development](https://github.com/sponsors/philiprehberger)
+
+🌐 [All Open Source Projects](https://philiprehberger.com/open-source-packages)
+
+💻 [GitHub Profile](https://github.com/philiprehberger)
+
+🔗 [LinkedIn Profile](https://www.linkedin.com/in/philiprehberger)
+
 ## License
 
-MIT
+[MIT](LICENSE)
