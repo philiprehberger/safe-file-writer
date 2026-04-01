@@ -80,17 +80,75 @@ $deleted = SafeFile::delete('/path/to/file.txt');
 // Returns true if deleted, false if file didn't exist
 ```
 
+### Backup Before Write
+
+```php
+use PhilipRehberger\SafeFileWriter\SafeFile;
+
+// Backs up existing file with timestamp, then writes new content atomically
+SafeFile::writeWithBackup('/path/to/config.txt', 'new config');
+// Creates /path/to/config.txt.2026-03-31T120000.bak before overwriting
+
+// Store backups in a custom directory
+SafeFile::writeWithBackup('/path/to/config.txt', 'updated', '/var/backups');
+
+// Same for JSON files
+SafeFile::writeJsonWithBackup('/path/to/data.json', ['version' => 2]);
+```
+
+### File Checksums
+
+```php
+use PhilipRehberger\SafeFileWriter\Checksum;
+use PhilipRehberger\SafeFileWriter\SafeFile;
+
+// Compute a SHA-256 checksum (default)
+$hash = SafeFile::checksum('/path/to/file.txt');
+
+// Use a different algorithm
+$md5 = SafeFile::checksum('/path/to/file.txt', 'md5');
+
+// Verify a file against a known checksum
+$valid = SafeFile::verifyChecksum('/path/to/file.txt', $expectedHash);
+
+// Compare two files
+$same = Checksum::compareFiles('/path/to/a.txt', '/path/to/b.txt');
+```
+
+### Atomic Multi-File Writes
+
+```php
+use PhilipRehberger\SafeFileWriter\SafeFile;
+
+// Write multiple files atomically — all or nothing
+SafeFile::writeMany([
+    '/path/to/config.json' => '{"key": "value"}',
+    '/path/to/settings.yaml' => 'debug: true',
+    '/path/to/version.txt' => '1.1.0',
+]);
+// If any file fails to write, previously written files are rolled back
+```
+
 ## API
 
 | Method | Description | Returns |
 |---|---|---|
 | `SafeFile::write(string $path, string $content)` | Atomic write via temp-file + rename | `void` |
 | `SafeFile::writeJson(string $path, mixed $data, int $flags = ...)` | Atomic JSON write | `void` |
+| `SafeFile::writeWithBackup(string $path, string $content, ?string $backupDir = null)` | Backup existing file, then atomic write | `void` |
+| `SafeFile::writeJsonWithBackup(string $path, mixed $data, ?string $backupDir = null)` | Backup existing file, then atomic JSON write | `void` |
+| `SafeFile::writeMany(array $files)` | Atomic multi-file write with rollback | `void` |
 | `SafeFile::append(string $path, string $content)` | Append with exclusive lock | `void` |
 | `SafeFile::read(string $path)` | Read with shared lock | `string` |
 | `SafeFile::readJson(string $path)` | Read and decode JSON | `mixed` |
+| `SafeFile::checksum(string $path, string $algo = 'sha256')` | Compute file checksum | `string` |
+| `SafeFile::verifyChecksum(string $path, string $expected, string $algo = 'sha256')` | Verify file against expected checksum | `bool` |
 | `SafeFile::exists(string $path)` | Check if file exists | `bool` |
 | `SafeFile::delete(string $path)` | Delete file if it exists | `bool` |
+| `BackupManager::backup(string $path, ?string $backupDir = null)` | Create timestamped backup of a file | `?string` |
+| `Checksum::compute(string $path, string $algo = 'sha256')` | Compute file hash | `string` |
+| `Checksum::verify(string $path, string $expected, string $algo = 'sha256')` | Verify file hash matches expected | `bool` |
+| `Checksum::compareFiles(string $pathA, string $pathB, string $algo = 'sha256')` | Compare checksums of two files | `bool` |
 | `FileWriteException` | Directory creation, temp-file creation, write, or rename failure | — |
 | `FileReadException` | File not found, open failure, lock failure, or read failure | — |
 | `\JsonException` | Invalid JSON on `writeJson()` or `readJson()` | — |
